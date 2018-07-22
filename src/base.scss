@@ -1,0 +1,36 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
+
+html {
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+
+    #content {
+      width: 100%;
+      height: 100%;
+
+      > * {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.teal {
+  background: linear-gradient(#34b4be 10%, #1f8188);
+}
+
+.hotpink {
+  background: linear-gradient(#fd6596 10%, #be2e5b);
+}
+
+.lime {
+  background: linear-gradient(#9ad232 10%, #6b971a);
+}
