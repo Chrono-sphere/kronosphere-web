@@ -14,7 +14,7 @@ class TextBox extends Component {
     this.setState({ value }, () => this.isValid(this.state.value));
   };
 
-  controlId = uuidv4();
+  controlId = this.props.id ? this.props.id : uuidv4();
 
   isValid = (value) => {
     const badValidations = this.props.validations.filter(validation => !validation.isValid(value));
@@ -53,6 +53,7 @@ class TextBox extends Component {
 }
 
 TextBox.propTypes = {
+  id: PropTypes.string,
   placeholder: PropTypes.string,
   validations: PropTypes.arrayOf(PropTypes.object),
   showValidations: PropTypes.bool,
@@ -62,6 +63,7 @@ TextBox.propTypes = {
 };
 
 TextBox.defaultProps = {
+  id: null,
   placeholder: '',
   validations: [],
   showValidations: true,

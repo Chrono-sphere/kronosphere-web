@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SimpleButton should render deep correctly 1`] = `
-<a
+<button
   className="simplebutton"
-  href="https://gph.is/1sD7JH3"
+  disabled={false}
+  onClick={[Function]}
 >
   Click
-</a>
+</button>
 `;

@@ -14,12 +14,21 @@ describe('TextBox', () => {
   it('should set the props correctly', () => {
     const wrapper = shallow(<TextBox placeholder={placeholder} />);
     const { className, children } = wrapper.props();
+    const input = children[0];
+    const span = children[1];
+
     expect(className).toBe('textbox');
-    expect(children).toBe(placeholder);
+    expect(input.props.placeholder).toBe(placeholder);
+    expect(input.props.type).toBe('normal');
+    expect(input.props.value).toBe('');
+    expect(input.props.spellCheck).toBe(false);
+
+    expect(span.props.className).toBe('input-highlight');
+    expect(span.props.children).toBe('');
   });
 
   it('should render deep correctly', () => {
-    const tree = renderer.create(<TextBox placeholder={placeholder} />);
+    const tree = renderer.create(<TextBox placeholder={placeholder} id="test" />);
     expect(tree).toMatchSnapshot();
   });
 });

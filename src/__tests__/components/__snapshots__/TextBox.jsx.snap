@@ -3,7 +3,7 @@
 exports[`TextBox should render deep correctly 1`] = `
 <div
   className="textbox"
-  id="ab41a2da-c864-4fb1-962e-7d28ff084c67"
+  id="test"
 >
   <input
     onChange={[Function]}

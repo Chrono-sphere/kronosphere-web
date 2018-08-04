@@ -8,7 +8,7 @@ describe('SimpleButton', () => {
   const title = 'Click';
 
   it('should render without throwing an error', () => {
-    expect(shallow(<SimpleButton title={title} />).find('a.simplebutton').exists()).toBe(true);
+    expect(shallow(<SimpleButton title={title} />).find('button.simplebutton').exists()).toBe(true);
   });
 
   it('should set the props correctly', () => {
