@@ -1,7 +1,10 @@
 import React from 'react';
+import Moment from 'components/Moment/Moment';
 
 const Dashboard = () => (
-  <div>Dashboard</div>
+  <div>
+    <Moment />
+  </div>
 );
 
 export default Dashboard;

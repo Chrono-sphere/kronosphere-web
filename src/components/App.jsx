@@ -7,8 +7,8 @@ import Dashboard from 'components/Dashboard/Dashboard';
 const App = () => (
   <div className="app-container">
     <Switch>
-      <Route path="/" component={Landing} />
       <Route name="Dashboard" path="/dashboard" component={Dashboard} />
+      <Route path="/" component={Landing} />
     </Switch>
   </div>
 );
