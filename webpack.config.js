@@ -70,6 +70,7 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components'),
       images: path.resolve(__dirname, 'src/assets/images'),
       styles: path.resolve(__dirname, 'src/assets/styles'),
+      utils: path.resolve(__dirname, 'src/utils'),
     },
     extensions: ['.js', '.jsx'],
   },

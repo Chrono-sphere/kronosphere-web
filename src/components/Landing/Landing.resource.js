@@ -5,6 +5,7 @@ const LandingResources = {
   Button: {
     login: 'Login',
     signup: 'Sign-up',
+    ready: 'Ready!',
   },
 };
 

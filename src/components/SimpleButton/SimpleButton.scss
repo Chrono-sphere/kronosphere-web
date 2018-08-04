@@ -3,35 +3,41 @@
 .simplebutton {
   display: flex;
 
+  color: $colors-dodgerblue;
+  width: 9em;
+  border: 2px solid $colors-dodgerblue;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s;
+  position: relative;
+
+  width: auto;
+  font-size: 24px;
+  font-weight: 550;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  outline: none;
+
+  &:disabled {
+    color: gray;
+    border-color: gray;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    cursor: pointer;
   }
 
   &:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-  }
-
-  &:link,
-  &:visited {
-    color: $colors-dodgerblue;
-    height: 30px;
-    width: 150px;
-    border: 2px solid $colors-dodgerblue;
-    text-decoration: none;
-    padding: 15px 40px;
-    display: inline-block;
-    border-radius: 100px;
-    transition: all .2s;
-    position: relative;
-
-    width: auto;
-    font-size: 24px;
-    font-weight: 550;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
   }
 
   &:hover::after {
