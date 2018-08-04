@@ -16,7 +16,23 @@
     background-position: bottom;
     animation-name: moveInBottom;
     animation-duration: 1.5s;
-    animation-delay: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  .landing-animation-move-out-bottom {
+    opacity: 1;
+    animation-name: moveOutBottom;
+    animation-duration: 0.5s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+
+  .landing-animation-fade-in {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-delay: 0s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
   }
@@ -39,7 +55,6 @@
             opacity: 0;
             animation-name: moveInRight;
             animation-duration: 1s;
-            animation-delay: 0.2s;
             animation-timing-function: ease-out;
             animation-fill-mode: forwards;
           }
@@ -68,7 +83,7 @@
         opacity: 0;
         animation-name: fadeIn;
         animation-duration: 1.5s;
-        animation-delay: 2s;
+        animation-delay: 1s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
       }
@@ -85,6 +100,14 @@
         animation-delay: 2s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
+    }
+
+    .landing-form {
+        .landing-form-controls {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+        }
     }
   }
 }
@@ -136,6 +159,20 @@
   100% {
       opacity: 1;
       transform: translateY(0em);
+  }
+}
+
+@keyframes moveOutBottom {
+  /* Initial state */
+  0% {
+      opacity: 1;
+      transform: translateY(0em);
+  }
+
+  /* Final state */
+  100% {
+      opacity: 0;
+      transform: translateY(10em);
   }
 }
 

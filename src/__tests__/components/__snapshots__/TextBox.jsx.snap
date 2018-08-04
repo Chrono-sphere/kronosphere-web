@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextBox should render deep correctly 1`] = `
+<div
+  className="textbox"
+  id="test"
+>
+  <input
+    onChange={[Function]}
+    placeholder="text"
+    spellCheck={false}
+    type="normal"
+    value=""
+  />
+  <span
+    className="input-highlight"
+  >
+    
+  </span>
+</div>
+`;
