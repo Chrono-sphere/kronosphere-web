@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleButton should render deep correctly 1`] = `
+<div
+  className="moment"
+>
+  <div
+    className="moment-day-content"
+  >
+    <div
+      className="moment-day-number"
+    >
+      <div
+        className="moment-day-number-digit"
+      >
+        9
+      </div>
+      <div
+        className="moment-day-number-subscript"
+      >
+        th
+      </div>
+    </div>
+    <div
+      className="moment-month"
+    >
+      December 1992
+    </div>
+  </div>
+  <div
+    className="moment-time-content"
+  >
+    3:24 AM
+  </div>
+</div>
+`;
