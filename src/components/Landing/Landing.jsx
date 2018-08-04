@@ -1,88 +1,62 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import { Redirect } from 'react-router-dom';
 import $ from 'jquery';
 import SimpleButton from 'components/SimpleButton/SimpleButton';
-import TextBox from 'components/TextBox/TextBox';
+import Routes from 'utils/Routes';
 import Utils from 'utils/Utils';
-import Validation, { ValidationType } from 'utils/Validation';
+import currentUserQuery from 'queries/CurrentUser';
+import PropTypes from 'prop-types';
 import Logo from 'images/logo/kronosphere_logo_without_shadow.png';
 import Resources from './Landing.resource';
 
 import './Landing.scss';
+import LoginForm from '../LoginForm/LoginForm';
+import SignupForm from '../SignupForm/SignupForm';
 
 class Landing extends Component {
   state = {
     showLogin: false,
     showSignup: false,
-    isReadyButtonDisable: true,
-    passwordValue: '',
-    isEmailValid: false,
-    isPasswordValid: false,
-    isConfirmPasswordValid: false,
   }
 
   onLoginBtnClicked = () => this.setState({ showLogin: true, showSignup: false })
 
   onSignupBtnClicked = () => this.setState({ showSignup: true, showLogin: false })
 
-  onEmailValidityChange = (isValid) => {
-    const isReadyButtonDisable = !(
-      isValid &&
-      this.state.isPasswordValid &&
-      // Only validate the confirm password field if the its a signup form
-      (
-        (
-          this.state.showSignup &&
-          this.state.isConfirmPasswordValid
-        ) ||
-        this.state.showLogin
-      )
-    );
-    this.setState({ isReadyButtonDisable, isEmailValid: isValid });
-  }
+  getLandingRoute = () => (
+    <div className="landing">
+      <div className="landing-background" />
+      <div className="landing-details">
+        <div className="landing-heading">
+          <img className="landing-logo-image" alt="logo" src={Logo} />
+          <div className="landing-logo-text">
+            ronosphere
+          </div>
+        </div>
+        <div className="landing-body">
+          {Resources.Content.body}
+        </div>
+        <div className="landing-button-container">
+          <SimpleButton
+            title={Resources.Button.signup}
+            onBtnClick={this.onSignupBtnClicked}
+          />
+          <SimpleButton
+            title={Resources.Button.login}
+            onBtnClick={this.onLoginBtnClicked}
+          />
+        </div>
+        <div className="landing-form">
+          {this.showForm()}
+        </div>
+      </div>
+    </div>
+  )
 
-  onPasswordValidityChange = (isValid) => {
-    const isReadyButtonDisable = !(
-      isValid &&
-      this.state.isEmailValid &&
-      // Only validate the confirm password field if the its a signup form
-      (
-        (
-          this.state.showSignup &&
-          this.state.isConfirmPasswordValid
-        ) ||
-        this.state.showLogin
-      )
-    );
-    this.setState({ isReadyButtonDisable, isPasswordValid: isValid });
-  }
-
-  onConfirmPasswordValidityChange = (isValid) => {
-    const isReadyButtonDisable = !(
-      isValid &&
-      this.state.isEmailValid &&
-      this.state.isPasswordValid
-    );
-    this.setState({ isReadyButtonDisable, isConfirmPasswordValid: isValid });
-  }
-
-  onPasswordValueChange = (passwordValue) => {
-    this.setState({ passwordValue });
-    this.confirmPasswordFieldValidations[0].args = [passwordValue];
-  }
-
-  emailFieldValidations = [
-    new Validation(ValidationType.Required),
-    new Validation(ValidationType.Email),
-  ];
-
-  passwordFieldValidations = [
-    new Validation(ValidationType.Required),
-  ];
-
-  confirmPasswordFieldValidations = [
-    new Validation(ValidationType.Match, [this.state.passwordValue]),
-  ];
-
+  /**
+   * Provides the JSX to display the login form.
+   */
   showLoginForm = () => {
     const signupBtn = $('.simplebutton:eq(0)');
     const loginBtn = $('.simplebutton:eq(1)');
@@ -91,27 +65,17 @@ class Landing extends Component {
     signupBtn.show();
 
     return (
-      <div className="landing-form-controls">
-        <TextBox
-          placeholder="Email"
-          validations={this.emailFieldValidations}
-          onValidityChange={this.onEmailValidityChange}
-        />
-        <TextBox
-          placeholder="Password"
-          inputType="password"
-          onValueChange={this.onPasswordValueChange}
-          validations={this.passwordFieldValidations}
-          onValidityChange={this.onPasswordValidityChange}
-        />
-        <SimpleButton
-          title={Resources.Button.ready}
-          btnDisabled={this.state.isReadyButtonDisable}
-        />
-      </div>
+      <LoginForm
+        emailPlaceholder={Resources.Placeholder.email}
+        passwordPlaceholder={Resources.Placeholder.password}
+        buttonLabel={Resources.Button.ready}
+      />
     );
   }
 
+  /**
+   * Provides the JSX to display the signup form.
+   */
   showSignUpForm = () => {
     const signupBtn = $('.simplebutton:eq(0)');
     const loginBtn = $('.simplebutton:eq(1)');
@@ -120,33 +84,18 @@ class Landing extends Component {
     loginBtn.show();
 
     return (
-      <div className="landing-form-controls">
-        <TextBox
-          placeholder="Email"
-          validations={this.emailFieldValidations}
-          onValidityChange={this.onEmailValidityChange}
-        />
-        <TextBox
-          placeholder="Password"
-          inputType="password"
-          validations={this.passwordFieldValidations}
-          onValueChange={this.onPasswordValueChange}
-          onValidityChange={this.onPasswordValidityChange}
-        />
-        <TextBox
-          placeholder="Confirm Password"
-          onValidityChange={this.onConfirmPasswordValidityChange}
-          validations={this.confirmPasswordFieldValidations}
-          inputType="password"
-        />
-        <SimpleButton
-          title={Resources.Button.ready}
-          btnDisabled={this.state.isReadyButtonDisable}
-        />
-      </div>
+      <SignupForm
+        emailPlaceholder={Resources.Placeholder.email}
+        passwordPlaceholder={Resources.Placeholder.password}
+        confirmPasswordPlaceholder={Resources.Placeholder.confirmPassword}
+        buttonLabel={Resources.Button.ready}
+      />
     );
   }
 
+  /**
+   * Depending on the state, this shows the appropriate form (Signup or Login).
+   */
   showForm = () => {
     if (this.state.showLogin) {
       this.triggerShowFormAnimation();
@@ -184,35 +133,33 @@ class Landing extends Component {
     );
   }
 
-  render = () => (
-    <div className="landing">
-      <div className="landing-background" />
-      <div className="landing-details">
-        <div className="landing-heading">
-          <img className="landing-logo-image" alt="logo" src={Logo} />
-          <div className="landing-logo-text">
-            ronosphere
-          </div>
-        </div>
-        <div className="landing-body">
-          {Resources.Content.body}
-        </div>
-        <div className="landing-button-container">
-          <SimpleButton
-            title={Resources.Button.signup}
-            onBtnClick={this.onSignupBtnClicked}
-          />
-          <SimpleButton
-            title={Resources.Button.login}
-            onBtnClick={this.onLoginBtnClicked}
-          />
-        </div>
-        <div className="landing-form">
-          {this.showForm()}
-        </div>
-      </div>
-    </div>
-  )
+  /**
+   * Based on if an active cookie for a logged in user exists, we direct to then
+   * dashboard or show the signup box
+   * @return {React.Component | Route} Component or Route(component) to render
+   */
+  renderRoute() {
+    const { loading, user } = this.props.data;
+
+    if (loading) {
+      return (<div>Loading...</div>);
+    } else if (!loading && !user) {
+      return this.getLandingRoute();
+    }
+
+    return (<Redirect to={Routes.Dashboard} />);
+  }
+
+  render = () => this.renderRoute()
 }
 
-export default Landing;
+Landing.propTypes = {
+  data: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+};
+
+Landing.defaultProps = {
+
+  data: {},
+};
+
+export default graphql(currentUserQuery)(Landing);
