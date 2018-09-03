@@ -1,0 +1,9 @@
+.task-card-container {
+  height: fit-content;
+  padding: 6em;
+  display: grid;
+  grid-gap: 1em;
+  margin: 0em;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(24em, 1fr));
+}

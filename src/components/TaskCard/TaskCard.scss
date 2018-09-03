@@ -1,0 +1,136 @@
+.task-card {
+  position: relative;
+  height: 450px;
+  width: 900px;
+  margin : 200px auto;
+  background-color: #FFF;
+  -webkit-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+
+  .task-card-thumbnail {
+    float: left;
+    position: relative;
+    left: 30px;
+    top: -30px;
+    height: 320px;
+    width: 530px;
+    -webkit-box-shadow: 10px 10px 60px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 60px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 60px 0px rgba(0,0,0,0.75);
+    overflow: hidden;
+  }
+
+  img.left {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: auto;
+    width: 100%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  .task-card-right {
+    margin-left: 590px;
+    margin-right: 20px;
+
+    h1 {
+      padding-top: 15px;
+      font-size: 1.3rem;
+      color: #4B4B4B;
+    }
+  }
+
+  h5 {
+    position: absolute;
+    left: 30px;
+    bottom: -120px;
+    font-size: 6rem;
+    color: #C3C3C3;
+  }
+  
+  h6 {
+    position: absolute;
+    left: 30px;
+    bottom: -55px;
+    font-size: 2rem;
+    color: #C3C3C3;
+  }
+
+  ul {
+    margin-top: 115px;
+    margin-left: 250px;
+  }
+
+  li {
+    display: inline;
+    list-style: none;
+    padding-right: 40px;
+    color: #7B7B7B;
+  }
+
+  .task-card-separator {
+    margin-top: 10px;
+    border: 1px solid #C3C3C3;
+  }
+}
+
+.collapsed-task-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  width: 24em;
+  height: 14em;
+  border-radius: 0.9em;
+  background-position: center;
+  background-size: 120%;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+    transform: translateY(0.5em);
+    transition-duration: 0.25s;
+  }
+
+  .collapsed-task-card-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: fit-content;
+
+    .collapsed-task-card-title {
+      display: flex;
+      height: fit-content;
+      width: 11em;
+      font-size: 1.4em;
+      justify-content: flex-end;
+      margin-right: 0.5em;
+      margin-top: 0.5em;
+    }
+  
+    .collapsed-task-card-time {
+      margin-left: 1em;
+      margin-top: 0.5em;
+  
+      .collapsed-task-card-time-value {
+        .collapsed-task-card-time-value-time {
+          font-size: 1.5em;
+        }
+  
+        .collapsed-task-card-time-value-day {
+  
+        }
+      }
+    }
+  }
+
+  .collapsed-task-card-footer {
+    .collapsed-task-card-footer-difficulty {
+      margin-left: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+}
