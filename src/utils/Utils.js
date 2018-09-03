@@ -29,4 +29,7 @@ const addClassUniquely = (element, strClass, prepend) => {
   }
 };
 
-export default { prependClass, addClassUniquely };
+// TODO: localize
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+export default { prependClass, addClassUniquely, days };

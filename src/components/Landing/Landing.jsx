@@ -158,7 +158,6 @@ Landing.propTypes = {
 };
 
 Landing.defaultProps = {
-
   data: {},
 };
 

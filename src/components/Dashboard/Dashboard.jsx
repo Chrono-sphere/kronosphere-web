@@ -7,7 +7,7 @@ const Dashboard = () => (
   <div>
     <Moment />
     <TaskCardContainer>
-      <TaskCard
+      {/* <TaskCard
         title="Buy groceries"
         image="http://wolfcreekcompany.com/wp-content/uploads/2016/11/office-work.jpg"
         difficulty="#2ECC40"
@@ -21,7 +21,7 @@ const Dashboard = () => (
         title="Meet friends for drinks at Buffalo Wild Wings"
         image="https://i.ytimg.com/vi/XRtkIcUX97w/maxresdefault.jpg"
         difficulty="#FFDC00"
-      />
+      /> */}
       {/*
       <TaskCard
         title="Meet friends for drinks at Buffalo Wild Wings"

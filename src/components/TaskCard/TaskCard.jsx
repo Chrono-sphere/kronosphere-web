@@ -44,10 +44,10 @@ class TaskCard extends Component {
           </div>
           <div className="collapsed-task-card-time-value">
             <div className="collapsed-task-card-time-value-time">
-              5:00PM
+              {this.props.time}
             </div>
             <div className="collapsed-task-card-time-value-day">
-              Thursday
+              {this.props.day}
             </div>
           </div>
         </div>
@@ -67,12 +67,18 @@ TaskCard.propTypes = {
   title: PropTypes.string,
   image: PropTypes.string,
   difficulty: PropTypes.string,
+  time: PropTypes.string,
+  day: PropTypes.string,
 };
 
 TaskCard.defaultProps = {
   title: '',
   image: '',
   difficulty: '',
+  time: '',
+  day: '',
 };
+
+export const getRandomImage = () => 'http://wolfcreekcompany.com/wp-content/uploads/2016/11/office-work.jpg';
 
 export default TaskCard;
