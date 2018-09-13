@@ -1,0 +1,21 @@
+.expanded-task-card-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  opacity: 0;
+  pointer-events: none;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  margin-right: 5em;
+  background-color: #ccc7c7;
+  border-radius: 2em;
+  padding: 4em;
+  animation: fadeIn 0.5s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0%   { opacity: 0 }
+  100% { opacity: 1 }
+}

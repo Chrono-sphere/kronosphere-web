@@ -1,9 +1,40 @@
+// 36em is the calculated value of the container
 .task-card-container {
-  height: fit-content;
-  padding: 6em;
-  display: grid;
-  grid-gap: 1em;
-  margin: 0em;
-  width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(24em, 1fr));
+  height: 100%;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  margin: 4em auto 4em calc(50% - 18em);
+  width: fit-content;
+  min-width: 24em;
+  border-radius: 2em;
+  background-color: #49bdf1;
+  animation: translateRightFromOutside 1s ease-in-out;
+
+  .collapsed-task-card {
+    margin: 1.5em 0em;
+  }
+}
+
+.task-card-container-translate {
+  animation: translateLeft 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes translateLeft {
+  0% {
+    margin-left: calc(50% - 18em);
+  }
+  100% {
+    margin-left: 5em;
+  }
+}
+
+@keyframes translateRightFromOutside {
+  0% {
+    margin-left: -36em;
+  }
+  100% {
+    margin-left: calc(50% - 18em);
+  }
 }

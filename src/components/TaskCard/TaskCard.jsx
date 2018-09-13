@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faEye, faShareSquare, faCalendarCheck, faDotCircle } from '@fortawesome/fontawesome-free-regular';
+import { faClock, faEye, faShareSquare, faCalendarCheck } from '@fortawesome/fontawesome-free-regular';
+
 import './TaskCard.scss';
 
 class TaskCard extends Component {
   state = {
-    isExpanded: false,
+    isEditMode: false,
   };
 
-  renderCard = () => (
+  render = () => (
     <div className="task-card">
       <div className="task-card-thumbnail">
         <img className="left" alt="" src="https://cdn2.hubspot.net/hubfs/322787/Mychefcom/images/BLOG/Header-Blog/photo-culinaire-pexels.jpg"/>
@@ -31,54 +31,6 @@ class TaskCard extends Component {
       </ul>
     </div>
   )
-
-  render = () => (
-    <div
-      className="collapsed-task-card"
-      style={{ backgroundImage: `linear-gradient(to top, rgba(255,255,255,0) -30%, rgba(0, 0, 0, 1)), url(${this.props.image})` }}
-    >
-      <div className="collapsed-task-card-header">
-        <div className="collapsed-task-card-time">
-          <div className="collapsed-task-card-time-icon">
-            <FontAwesomeIcon icon={faClock} size="lg" />
-          </div>
-          <div className="collapsed-task-card-time-value">
-            <div className="collapsed-task-card-time-value-time">
-              {this.props.time}
-            </div>
-            <div className="collapsed-task-card-time-value-day">
-              {this.props.day}
-            </div>
-          </div>
-        </div>
-        <div className="collapsed-task-card-title">{this.props.title}</div>
-      </div>
-
-      <div className="collapsed-task-card-footer">
-        <div className="collapsed-task-card-footer-difficulty pulsate">
-          <FontAwesomeIcon icon={faDotCircle} size="lg" pulse color={this.props.difficulty} />
-        </div>
-      </div>
-    </div>
-  )
 }
-
-TaskCard.propTypes = {
-  title: PropTypes.string,
-  image: PropTypes.string,
-  difficulty: PropTypes.string,
-  time: PropTypes.string,
-  day: PropTypes.string,
-};
-
-TaskCard.defaultProps = {
-  title: '',
-  image: '',
-  difficulty: '',
-  time: '',
-  day: '',
-};
-
-export const getRandomImage = () => 'http://wolfcreekcompany.com/wp-content/uploads/2016/11/office-work.jpg';
 
 export default TaskCard;

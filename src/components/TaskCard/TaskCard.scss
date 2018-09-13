@@ -1,8 +1,9 @@
 .task-card {
   position: relative;
+  z-index: 1;
   height: 450px;
   width: 900px;
-  margin : 200px auto;
+  margin : auto;
   background-color: #FFF;
   -webkit-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
@@ -74,63 +75,5 @@
   .task-card-separator {
     margin-top: 10px;
     border: 1px solid #C3C3C3;
-  }
-}
-
-.collapsed-task-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: white;
-  width: 24em;
-  height: 14em;
-  border-radius: 0.9em;
-  background-position: center;
-  background-size: 120%;
-
-  &:hover {
-    cursor: pointer;
-    box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
-    transform: translateY(0.5em);
-    transition-duration: 0.25s;
-  }
-
-  .collapsed-task-card-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    height: fit-content;
-
-    .collapsed-task-card-title {
-      display: flex;
-      height: fit-content;
-      width: 11em;
-      font-size: 1.4em;
-      justify-content: flex-end;
-      margin-right: 0.5em;
-      margin-top: 0.5em;
-    }
-  
-    .collapsed-task-card-time {
-      margin-left: 1em;
-      margin-top: 0.5em;
-  
-      .collapsed-task-card-time-value {
-        .collapsed-task-card-time-value-time {
-          font-size: 1.5em;
-        }
-  
-        .collapsed-task-card-time-value-day {
-  
-        }
-      }
-    }
-  }
-
-  .collapsed-task-card-footer {
-    .collapsed-task-card-footer-difficulty {
-      margin-left: 0.5em;
-      margin-bottom: 0.5em;
-    }
   }
 }
