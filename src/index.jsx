@@ -11,7 +11,7 @@ import App from './components/App';
 import './base.scss';
 
 const link = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: process.env.KRONOSPHERE_QL,
   credentials: 'include',
 });
 
