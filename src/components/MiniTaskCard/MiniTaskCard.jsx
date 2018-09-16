@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faDotCircle } from '@fortawesome/fontawesome-free-regular';
+import Utils from 'utils/Utils';
 import './MiniTaskCard.scss';
 
 class MiniTaskCard extends Component {
@@ -14,7 +15,7 @@ class MiniTaskCard extends Component {
       className="collapsed-task-card"
       role="button"
       onKeyDown={this.props.onClick}
-      onClick={this.props.onClick}
+      onClick={this.props.onClick.bind(this, this.props.id)}
       style={{ backgroundImage: `linear-gradient(to top, rgba(255,255,255,0) -30%, rgba(0, 0, 0, 1)), url(${this.props.image})` }}
     >
       <div className="collapsed-task-card-header">
@@ -44,6 +45,7 @@ class MiniTaskCard extends Component {
 }
 
 MiniTaskCard.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   image: PropTypes.string,
   difficulty: PropTypes.string,
@@ -53,6 +55,7 @@ MiniTaskCard.propTypes = {
 };
 
 MiniTaskCard.defaultProps = {
+  id: Utils.emptyId,
   title: '',
   image: '',
   difficulty: '',

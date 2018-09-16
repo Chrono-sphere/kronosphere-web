@@ -9,10 +9,22 @@
   margin-right: 5em;
   background-color: #ccc7c7;
   border-radius: 2em;
-  padding: 4em;
+  padding: 2em;
   animation: fadeIn 0.5s ease-in-out;
   animation-delay: 1s;
   animation-fill-mode: forwards;
+
+  .expanded-task-card-container-close {
+    display: inline-block;
+    height: fit-content;
+    width: fit-content;
+    color: #585555;
+
+    > svg {
+      height: 2em;
+      width: 2em;
+    }
+  }
 }
 
 @keyframes fadeIn {

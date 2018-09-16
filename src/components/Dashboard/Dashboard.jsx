@@ -9,15 +9,24 @@ class Dashboard extends Component {
   state = {
     showExpandedTaskContainer: false,
   };
+  taskDetails = {};
 
   prepareTaskCardDetails = (taskDetails) => {
     this.setState({ showExpandedTaskContainer: true });
+    this.taskDetails = taskDetails;
   }
 
   renderExpandedTaskCardContainer = () => {
     if (this.state.showExpandedTaskContainer) {
       return (
-        <ExpandedTaskCardContainer />
+        <ExpandedTaskCardContainer
+          id={this.taskDetails.id}
+          title={this.taskDetails.title}
+          image={this.taskDetails.image}
+          createTime={new Date(this.taskDetails.createTime)}
+          deadline={new Date(this.taskDetails.deadline)}
+          description={this.taskDetails.description}
+        />
       );
     }
 
@@ -31,6 +40,6 @@ class Dashboard extends Component {
       {this.renderExpandedTaskCardContainer()}
     </div>
   )
-};
+}
 
 export default Dashboard;

@@ -13,6 +13,7 @@ class TaskCardContainer extends Component {
   state = {
     isTaskSelected: false,
   };
+  taskIdToTask = {};
 
   // Medium: #FFDC00
   // Hard: #FF4136
@@ -25,8 +26,12 @@ class TaskCardContainer extends Component {
       return tasks.map((task) => {
         const date = new Date(task.deadline);
 
+        // Create a map for task data based on id
+        this.taskIdToTask[task.id] = task;
+
         return (<MiniTaskCard
           key={task.id}
+          id={task.id}
           time={date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           day={Utils.days[date.getDay()]}
           title={task.title}
@@ -44,13 +49,13 @@ class TaskCardContainer extends Component {
    * 1) Translate the container to the left
    * 2) Open the TaskCard
    */
-  miniTaskCardClicked = () => {
+  miniTaskCardClicked = (taskId) => {
     this.setState({ isTaskSelected: true });
 
     // Translate the container to the left
     $('.task-card-container').addClass('task-card-container-translate');
 
-    this.props.taskHandler();
+    this.props.taskHandler(this.taskIdToTask[taskId]);
   }
 
   render = () => (
